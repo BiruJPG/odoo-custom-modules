@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="rental_order_view_form_charged_days" model="ir.ui.view">
+        <field name="name">sale.order.rental.charged.days</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="rental.rental_order_view_form"/>
+        <field name="arch" type="xml">
+
+            <!-- Inserta debajo del campo "Duración" -->
+            <xpath expr="//field[@name='duration_days']/.." position="after">
+                <group>
+                    <field name="rental_charged_days"
+                           string="Días cobrados"
+                           attrs="{'invisible': [('is_rental_order', '=', False)]}"/>
+                </group>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>
